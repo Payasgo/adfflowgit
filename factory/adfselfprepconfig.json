@@ -1,5 +1,10 @@
 {
 	"name": "adfselfprepconfig",
+	"properties": {
+		"globalConfigurations": {
+			"factoryStagingFolderPath": "RAW"
+		}
+	},
 	"location": "eastus",
 	"identity": {
 		"type": "SystemAssigned",
