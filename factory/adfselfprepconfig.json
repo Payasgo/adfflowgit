@@ -2,7 +2,9 @@
 	"name": "adfselfprepconfig",
 	"properties": {
 		"globalConfigurations": {
-			"factoryStagingFolderPath": "RAW"
+			"factoryStagingFolderPath": "RAW",
+			"factoryStagingLSReferenceName": "LS_stage_linkedService",
+			"factoryStagingLSType": "LinkedServiceReference"
 		}
 	},
 	"location": "eastus",
