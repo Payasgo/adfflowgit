@@ -16,6 +16,10 @@
 			"metadata": "Secure string for 'connectionString' of 'LS_SqlServer'",
 			"defaultValue": "Integrated Security=False;Data Source=KRANTHI;Initial Catalog=AdventureWorks2019;User ID=yarli"
 		},
+		"LS_stage_linkedService_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_stage_linkedService'"
+		},
 		"LS_AzureDataLakeStorage_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://surcecpysc.dfs.core.windows.net/"
@@ -53,6 +57,9 @@
 					},
 					"LS_AzureDataLakeStorage_accountKey": {
 						"value": "[parameters('LS_AzureDataLakeStorage_accountKey')]"
+					},
+					"LS_stage_linkedService_connectionString": {
+						"value": "[parameters('LS_stage_linkedService_connectionString')]"
 					},
 					"LS_SqlServer_connectionString": {
 						"value": "[parameters('LS_SqlServer_connectionString')]"

@@ -11,6 +11,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_AzureDataLakeStorage'"
 		},
+		"LS_stage_linkedService_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_stage_linkedService'"
+		},
 		"LS_SqlServer_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'LS_SqlServer'",
@@ -55,6 +59,19 @@
 				"type": "AzureKeyVault",
 				"typeProperties": {
 					"baseUrl": "[parameters('LS_AzureKeyVault_properties_typeProperties_baseUrl')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_stage_linkedService')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('LS_stage_linkedService_connectionString')]"
 				}
 			},
 			"dependsOn": []
@@ -418,7 +435,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/pl_Fullload')]",
+			"name": "[concat(parameters('factoryName'), '/pl_fullload_sqlserver_adls')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -467,7 +484,6 @@
 								"value": "@activity('Lookup').output.value",
 								"type": "Expression"
 							},
-							"isSequential": false,
 							"activities": [
 								{
 									"name": "Copy data",
@@ -485,7 +501,7 @@
 										"source": {
 											"type": "SqlServerSource",
 											"sqlReaderQuery": {
-												"value": "@concat('Select * from ', item().SchemaName, '.', item().TableName)",
+												"value": "@concat('SELECT * FROM ', item().SchemaName, '.', item().TableName)",
 												"type": "Expression"
 											},
 											"queryTimeout": "02:00:00",
@@ -538,7 +554,7 @@
 						}
 					},
 					{
-						"name": "Log_Success",
+						"name": "Log_SUCCESS",
 						"type": "SqlServerStoredProcedure",
 						"dependsOn": [
 							{
@@ -642,7 +658,7 @@
 									"type": "String"
 								},
 								"PipelineStatus": {
-									"value": "Failure",
+									"value": "FAILURE",
 									"type": "String"
 								},
 								"RunStart": {
