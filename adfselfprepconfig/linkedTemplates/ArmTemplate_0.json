@@ -781,7 +781,7 @@
 									"type": "String"
 								},
 								"PipelineStatus": {
-									"value": "FAILURE",
+									"value": "Failure",
 									"type": "String"
 								},
 								"RunStart": {
