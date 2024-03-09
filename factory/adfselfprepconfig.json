@@ -1,0 +1,9 @@
+{
+	"name": "adfselfprepconfig",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "a4a5a302-6021-4ab5-9b51-ae36310666c4",
+		"tenantId": "2ab449e2-ef2f-48ae-874e-650ec7d19695"
+	}
+}
