@@ -69,12 +69,14 @@
 									"partitionOption": "None"
 								},
 								"sink": {
-									"type": "ParquetSink",
+									"type": "DelimitedTextSink",
 									"storeSettings": {
 										"type": "AzureBlobFSWriteSettings"
 									},
 									"formatSettings": {
-										"type": "ParquetWriteSettings"
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".txt"
 									}
 								},
 								"enableStaging": false,
@@ -95,7 +97,7 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "DS_SInk_Parquet",
+									"referenceName": "DS_SINK_CSV_DelimitedText",
 									"type": "DatasetReference",
 									"parameters": {
 										"SchemaName": {
