@@ -680,7 +680,7 @@
 										{
 											"activity": "Copy data",
 											"dependencyConditions": [
-												"Completed"
+												"Succeeded"
 											]
 										}
 									],
@@ -741,7 +741,7 @@
 										{
 											"activity": "Copy data",
 											"dependencyConditions": [
-												"Completed"
+												"Failed"
 											]
 										}
 									],
